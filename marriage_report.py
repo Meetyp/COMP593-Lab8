@@ -29,14 +29,15 @@ def get_married_couples():
     cur = con.cursor()
 
     all_relationships_query = """
-        SELECT person1.name, person2.name, start_date FROM relationships WHERE type='spous'
+        SELECT person1.name, person2.name, start_date FROM relationships
         JOIN people person1 ON person1_id = person1.id
-        JOIN people person2 ON person2_id = person2.id;
+        JOIN people person2 ON person2_id = person2.id
+        WHERE type='spouse';
     """
     cur.execute(all_relationships_query)
     all_relationships = cur.fetchall()
     con.close()
-    return
+    return all_relationships
 
 def save_married_couples_csv(married_couples, csv_path):
     """Saves list of married couples to a CSV file, including both people's 
