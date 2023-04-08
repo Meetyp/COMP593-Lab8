@@ -25,7 +25,6 @@ def get_married_couples():
     Returns:
         list: (name1, name2, start_date) of married couples 
     """
-    # TODO: Function body
     con = sqlite3.connect(db_path)
     cur = con.cursor()
 
